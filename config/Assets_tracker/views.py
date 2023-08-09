@@ -2,7 +2,68 @@ from django.shortcuts import render,get_object_or_404,HttpResponseRedirect
 from . forms import companyForm,EmployeeForm,DeviceForm,TrackingForm
 from . models import Company,Employee,Device,Tracking
 # from django.contrib import messages
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .serializers import CompanySerializer, EmployeeSerializer, DeviceSerializer, TrackingSerializer
+from rest_framework import generics
+from .serializers import CompanySerializer, EmployeeSerializer, DeviceSerializer, TrackingSerializer
 # Create your views here.
+
+class CompanyList(generics.ListCreateAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+
+class CompanyDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+
+class EmployeeList(generics.ListCreateAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+class DeviceList(generics.ListCreateAPIView):
+    queryset = Device.objects.all()
+    serializer_class = DeviceSerializer
+
+class DeviceDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Device.objects.all()
+    serializer_class = DeviceSerializer
+
+class TrackingList(generics.ListCreateAPIView):
+    queryset = Tracking.objects.all()
+    serializer_class = TrackingSerializer
+
+class TrackingDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Tracking.objects.all()
+    serializer_class = TrackingSerializer
+
+@api_view(['GET'])
+def api_company_list(request):
+    companies = Company.objects.all()
+    serializer = CompanySerializer(companies, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def api_employee_list(request):
+    employees = Employee.objects.all()
+    serializer = EmployeeSerializer(employees, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def api_device_list(request):
+    devices = Device.objects.all()
+    serializer = DeviceSerializer(devices, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def api_tracking_list(request):
+    tracking_records = Tracking.objects.all()
+    serializer = TrackingSerializer(tracking_records, many=True)
+    return Response(serializer.data)
 def homeview(request):
     dataset = Tracking.objects.all()
     
