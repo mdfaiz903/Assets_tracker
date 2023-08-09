@@ -38,7 +38,7 @@ class Tracking(models.Model):
     employee = models.ForeignKey(Employee,on_delete=models.CASCADE, related_name='received_tracking_records')
     assign_date = models.DateField(default=now)
     return_date = models.DateField(null=True,blank=True)
-    condition_checkout = models.TextField()
+    condition_checkout = models.TextField(null=True,blank=True)
 
     def __str__(self):
         return f"{self.employee.e_name}-{self.device.type}-{self.assign_date}"
