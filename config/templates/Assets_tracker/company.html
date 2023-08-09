@@ -1,0 +1,14 @@
+{% include 'common_code/header.html' %}
+{% block content %}
+<div class="container">
+    <div class="col-md-6">
+        <form action="" method="post">
+            {% csrf_token %}
+        
+            {{form.as_p}}
+            <button type="submit">Submit</button>
+        </form>   
+    </div>
+</div>
+ 
+{% endblock content %}

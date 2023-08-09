@@ -1,0 +1,41 @@
+{% include 'common_code/header.html' %}
+      <div class="container text-center">
+        <h1>WELCOME ASSETS TRACKING</h1>
+        
+      </dib>
+      {% block content %}
+
+      {% endblock content %}
+  {% block content2 %}
+  <div class="container">
+    <table class="table table-success table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Device</th>
+            <th scope="col">Employee</th>
+            <th scope="col">Assign Date</th>
+            <th scope="col">Return Date</th>
+            <th scope="col">Checkout Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for data in dataset %}
+          <tr>
+            
+            <th scope="row">{{ data.id }}</th>
+            <td>{{ data.device }}</td>
+            <td>{{ data.employee }}</td>
+            <td>{{ data.assign_date }}</td>
+            <td>{{ data.return_date }}</td>
+            <td>{{ data.condition_checkout }}</td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+  {% endblock content2 %}
+
+  {% include 'common_code/footer.html' %}    
+ 

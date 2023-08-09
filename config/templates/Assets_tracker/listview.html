@@ -1,0 +1,31 @@
+
+<div class="main">
+ 
+    
+    <table class=" class="table table-success table-striped"">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">device</th>
+            <th scope="col">employee</th>
+            <th scope="col">assign_date</th>
+            <th scope="col">return_date</th>
+            <th scope="col">condition_checkout</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for data in dataset %}
+          <tr>
+            
+            <th scope="row">{{ data.id }}</th>
+            <td>{{ data.device }}</td>
+            <td>{{ data.employee }}</td>
+            <td>{{ data.assign_date }}</td>
+            <td>{{ data.return_date }}</td>
+            <td>{{ data.condition_checkout }}</td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
